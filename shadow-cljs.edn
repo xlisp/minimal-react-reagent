@@ -1,0 +1,17 @@
+{:source-paths
+ ["src"]
+
+ :dependencies
+ [[reagent "0.8.1"]]
+
+ :builds
+ {:app {:target     :browser
+        :output-dir "public/js/compiled"
+        :asset-path "/js/compiled"
+        :modules
+        {:main
+         {:entries [foo.core]}}
+
+        :devtools
+        {:http-root  "public"
+         :http-port  5000}}}}
