@@ -1,5 +1,6 @@
 (ns foo.core
-  (:require [reagent.core :as reagent]))
+  (:require [reagent.core :as reagent]
+            ["react-window" :refer [FixedSizeList]]))
 
 (defn my-component []
   [:h1 "这个是Cljs的组件~"])
@@ -33,3 +34,22 @@
             :style (:style props)}
       (str "cljs row component: " (:index props))]
      )))
+
+(def ^:export ListComponent
+  (reagent/reactify-component
+   (fn [props]
+     ;;(prn props)
+     [:> FixedSizeList
+      {:className "List"
+       :height 150 #_(:height props) ;; height就是null报错,Error: An invalid "height" prop has been specified. Vertical lists must specify a number for height. "null" was specified.  --->> 用react渲染才能爆详细的错误
+       ;; Height 就是 undefined报错: Error: An invalid "height" prop has been specified. Vertical lists must specify a number for height. "undefined" was specified.
+       :itemCount 1000
+       :itemSize 35
+       :width 300 ;;(:width props)
+       }
+      [:> RowComponent]
+
+      ;; Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object.
+      ;;(reagent/as-element [:p "====="])
+      
+      ])))

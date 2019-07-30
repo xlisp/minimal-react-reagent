@@ -14,6 +14,8 @@ const MyComponent2 = window.foo.core.MyComponent2;
 
 const RowComponent = window.foo.core.RowComponent;
 
+const ListComponent = window.foo.core.ListComponent;
+
 const Row = ({ index, style }) => (
   <div className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
       React {index} Row ,
@@ -21,26 +23,34 @@ const Row = ({ index, style }) => (
   </div>
 );
 
+// Bak Example Component:
+// const Example = () => (
+//   <AutoSizer>
+//     {({ height, width }) => (
+//       <List
+//         className="List"
+//         height={height}
+//         itemCount={1000}
+//         itemSize={35}
+//         width={width}
+//       >
+//         {RowComponent}
+//       </List>
+//     )}
+//   </AutoSizer>
+// );
 
 const Example = () => (
   <AutoSizer>
-    {({ height, width }) => (
-      <List
-        className="List"
-        height={height}
-        itemCount={1000}
-        itemSize={35}
-        width={width}
-      >
-        {RowComponent}
-      </List>
+      {({ height, width }) => (
+          {ListComponent}
     )}
   </AutoSizer>
 );
 // ///
-
+     
 // ReactDOM.render(<App />, document.getElementById('root'));
-ReactDOM.render(<Example />, document.getElementById('root'));
+ReactDOM.render(<ListComponent />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
