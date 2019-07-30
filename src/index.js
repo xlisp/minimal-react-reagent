@@ -12,12 +12,15 @@ import "./styles.css";
 
 const MyComponent2 = window.foo.core.MyComponent2;
 
+const RowComponent = window.foo.core.RowComponent;
+
 const Row = ({ index, style }) => (
   <div className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
       React {index} Row ,
       <MyComponent2 name={index}/>
   </div>
 );
+
 
 const Example = () => (
   <AutoSizer>
@@ -29,7 +32,7 @@ const Example = () => (
         itemSize={35}
         width={width}
       >
-        {Row}
+        {RowComponent}
       </List>
     )}
   </AutoSizer>
