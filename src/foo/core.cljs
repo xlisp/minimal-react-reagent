@@ -2,11 +2,28 @@
   (:require [reagent.core :as reagent]
             ["react-window" :refer [FixedSizeList]]))
 
-(defn my-component []
-  [:h1 "这个是Cljs的组件~"])
+(declare RowComponent)
+
+(defn my-component [props & children]
+  (prn "my-component---->>>" props "-----" children) ;;=> "my-component---->>>" {} "-----" nil
+  [:div
+   ;;[:h1 "这个是Cljs的组件~"]
+   
+   [:> FixedSizeList
+    {:class-name "List"
+     :height 1000 
+     :item-count 1000
+     :itemSize 35
+     :width 500}
+    ;;[:> RowComponent]
+    RowComponent ;; 当hello的位置放上字符串"aaa"时,就会报错CreateElement错误, 所以这个FixedSizeList组件接受的是这个RowComponent组件,而不是调用, 因为它内部必须调用这个组件
+    ]
+   ]
+  )
 
 ;;; IMPORTANT
 ;; :export metadata is necessary.
+;; OK: ReactDOM.render(<MyComponent />, document.getElementById('root'));
 (def ^:export MyComponent
   (reagent/reactify-component my-component))
 
@@ -38,8 +55,11 @@
 (def ^:export ListComponent
   (reagent/reactify-component
    (fn [props]
-     ;;(prn props)
-     [:> FixedSizeList
+     (prn props)
+     
+     [:p "=========="]
+     
+     #_[:> FixedSizeList
       {:className "List"
        :height 150 #_(:height props) ;; height就是null报错,Error: An invalid "height" prop has been specified. Vertical lists must specify a number for height. "null" was specified.  --->> 用react渲染才能爆详细的错误
        ;; Height 就是 undefined报错: Error: An invalid "height" prop has been specified. Vertical lists must specify a number for height. "undefined" was specified.

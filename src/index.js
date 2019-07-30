@@ -12,6 +12,9 @@ import "./styles.css";
 
 const MyComponent2 = window.foo.core.MyComponent2;
 
+
+const MyComponent = window.foo.core.MyComponent;
+
 const RowComponent = window.foo.core.RowComponent;
 
 const ListComponent = window.foo.core.ListComponent;
@@ -40,18 +43,60 @@ const Row = ({ index, style }) => (
 //   </AutoSizer>
 // );
 
-const Example = () => (
-  <AutoSizer>
-      {({ height, width }) => (
-          {ListComponent}
-    )}
-  </AutoSizer>
+// bak ok         
+const Example2 = () => (
+      <List
+        className="List"
+          height={1000}
+        itemCount={1000}
+        itemSize={35}
+          width={500}
+      >
+          {RowComponent}
+      </List>
 );
-// ///
+
+class Hello extends React.Component {
+  render() {
+    return React.createElement('div', null, `Hello ${this.props.toWhat}`);
+  }
+}         
+
+// Hello undefined 列表 OK: Hello必须是一个Component,{}是调用这个Component
+const Example3 = () => (
+      <List
+        className="List"
+          height={1000}
+        itemCount={1000}
+        itemSize={35}
+          width={500}
+      >
+          {Hello}
+      </List>
+);
+         
+         var stations = [
+         {call:'station one',frequency:'000'},
+         {call:'station two',frequency:'001'}
+         ]
+
+ // 可渲染出来,         
+//const Example = () => (
+//  <AutoSizer>
+//      {({ height, width }) => (
+//          <div>
+//              {stations.map(station => <div> {station.frequency} </div>)} 
+//       </div>
+//    )}
+//  </AutoSizer>
+//);
+//// ///
      
 // ReactDOM.render(<App />, document.getElementById('root'));
-ReactDOM.render(<ListComponent />, document.getElementById('root'));
+ReactDOM.render(<MyComponent />, document.getElementById('root'));
+//ReactDOM.render(<Example />, document.getElementById('root'));
 
+    
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
