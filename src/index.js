@@ -9,6 +9,17 @@ import AutoSizer from "react-virtualized-auto-sizer";
 
 import "./styles.css";
 
+import Button from '@material-ui/core/Button';
+
+//ReactDOM.render(<App2 />, document.getElementById('root'));
+function App2() {
+  return (
+    <Button variant="contained" color="primary">
+      Hello World
+    </Button>
+  );
+}
+
 const MyComponent = window.foo.core.MyComponent;
 
 const MyComponent2 = window.foo.core.MyComponent2;
@@ -86,7 +97,6 @@ const Example4 = () => (
 // ///
      
 ReactDOM.render(<MyComponent />, document.getElementById('root'));
-
     
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
