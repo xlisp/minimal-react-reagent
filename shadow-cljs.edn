@@ -2,7 +2,9 @@
  ["src"]
 
  :dependencies
- [[reagent "0.8.1"]]
+ [[reagent "0.8.1"]
+  ;;[react-window "1.8.5"] 不能放在这里,这里是jar包
+  ]
 
  :builds
  {:app {:target     :browser
