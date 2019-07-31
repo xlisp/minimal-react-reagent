@@ -15,6 +15,8 @@ const MyComponent2 = window.foo.core.MyComponent2;
 
 const RowComponent = window.foo.core.RowComponent;
 
+const AutoSizerComponent = window.foo.core.AutoSizerComponent;
+
 const Row = ({ index, style }) => (
   <div className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
       React {index} Row ,
@@ -74,6 +76,7 @@ var stations = [
     {call:'station two',frequency:'001'}
 ]
 
+
 const Example4 = () => (
   <AutoSizer>
       {({ height, width }) => (
@@ -85,7 +88,7 @@ const Example4 = () => (
 );
 // ///
      
-ReactDOM.render(<MyComponent />, document.getElementById('root'));
+ReactDOM.render(<AutoSizerComponent />, document.getElementById('root'));
 
     
 // If you want your app to work offline and load faster, you can change
