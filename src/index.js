@@ -4,20 +4,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-// react-window无限下拉:
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
 import "./styles.css";
 
-const MyComponent2 = window.foo.core.MyComponent2;
-
-
 const MyComponent = window.foo.core.MyComponent;
 
-const RowComponent = window.foo.core.RowComponent;
+const MyComponent2 = window.foo.core.MyComponent2;
 
-const ListComponent = window.foo.core.ListComponent;
+const RowComponent = window.foo.core.RowComponent;
 
 const Row = ({ index, style }) => (
   <div className={index % 2 ? "ListItemOdd" : "ListItemEven"} style={style}>
@@ -26,24 +22,22 @@ const Row = ({ index, style }) => (
   </div>
 );
 
-// Bak Example Component:
-// const Example = () => (
-//   <AutoSizer>
-//     {({ height, width }) => (
-//       <List
-//         className="List"
-//         height={height}
-//         itemCount={1000}
-//         itemSize={35}
-//         width={width}
-//       >
-//         {RowComponent}
-//       </List>
-//     )}
-//   </AutoSizer>
-// );
+const Example = () => (
+  <AutoSizer>
+    {({ height, width }) => (
+      <List
+        className="List"
+        height={height}
+        itemCount={1000}
+        itemSize={35}
+        width={width}
+      >
+        {RowComponent}
+      </List>
+    )}
+  </AutoSizer>
+);
 
-// bak ok         
 const Example2 = () => (
       <List
         className="List"
@@ -75,26 +69,23 @@ const Example3 = () => (
       </List>
 );
          
-         var stations = [
-         {call:'station one',frequency:'000'},
-         {call:'station two',frequency:'001'}
-         ]
+var stations = [
+    {call:'station one',frequency:'000'},
+    {call:'station two',frequency:'001'}
+]
 
- // 可渲染出来,         
-//const Example = () => (
-//  <AutoSizer>
-//      {({ height, width }) => (
-//          <div>
-//              {stations.map(station => <div> {station.frequency} </div>)} 
-//       </div>
-//    )}
-//  </AutoSizer>
-//);
-//// ///
+const Example4 = () => (
+  <AutoSizer>
+      {({ height, width }) => (
+          <div>
+              {stations.map(station => <div> {station.frequency} </div>)} 
+       </div>
+    )}
+  </AutoSizer>
+);
+// ///
      
-// ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(<MyComponent />, document.getElementById('root'));
-//ReactDOM.render(<Example />, document.getElementById('root'));
 
     
 // If you want your app to work offline and load faster, you can change
