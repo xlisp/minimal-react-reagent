@@ -1,5 +1,6 @@
 (ns foo.core
-  (:require [reagent.core :as reagent]
+  (:require [react-dom :refer [render]]
+            [reagent.core :as reagent]
             ["react-window" :refer [FixedSizeList]]))
 
 (declare RowComponent)
@@ -36,3 +37,5 @@
                      "ListItemEven")
             :style (:style props)}
       (str "cljs row component: " (:index props))])))
+
+(render (reagent/as-element [:> MyComponent]) (.getElementById js/document "root"))
